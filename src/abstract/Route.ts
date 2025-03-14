@@ -1,11 +1,11 @@
 import { Router } from "express"
-import { Contorller } from "./Contorller"
+import { Controller } from "./Controller"
 
 export abstract class Route{
 
     protected abstract url:string
 
-    protected abstract Contorller:Contorller
+    protected abstract Contorller:Controller
 
     protected router = Router()
 
@@ -19,3 +19,12 @@ export abstract class Route{
         return this.url
     }
 }
+
+const router = express.Router();
+
+router.get('/students', Controller.getStudents);
+router.get('/seats', Controller.getSeats);
+router.get('/timeslots', Controller.getTimeslots);
+router.get('/reservations',Controller.getReservations);
+
+export default router;
